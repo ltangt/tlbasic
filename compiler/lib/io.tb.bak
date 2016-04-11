@@ -1,0 +1,71 @@
+$include: "string.tb"
+
+Declare Native Function printint(p1 As Integer)
+Declare Native Function printstr(p1 As String)
+Declare Native Function printfloat(p1 As Float)
+Declare Native Function printchar(p1 As Byte)
+Declare Native Function printnewline()
+
+Declare Native Function inputint() As Integer
+Declare Native Function inputstr() As String
+Declare Native Function inputfloat() As Float
+Declare Native Function inputchar() As Byte
+
+Type File 
+End Type
+
+Const ReadMode  = 0
+Const WriteMode = 1
+
+Declare Native Function fileopen(filename As String, mode As Integer) As File
+Declare Native Function fileread(tfile As File,buf As Byte[], offset As Integer,length As Integer)
+Declare Native Function filewrite(tfile As File,buf As Byte[], offset As Integer,length As Integer)
+Declare Native Function fileclose(tfile As File)
+Declare Native Function filelength(tfile As File) As Integer
+
+function filewrite_int16(tfile As File, data As Integer)
+	Dim b As byte[] = new byte[2]
+	b[0] = data / 256
+	b[1] = data MOD 256
+	filewrite(tfile,b,0,2)
+	erase b
+end function
+
+function fileread_int16(tfile As File) As Integer
+	Dim data As Integer
+	Dim b As byte[] = new byte[2]
+	fileread(tfile,b,0,2)
+	data = b[0]*256 + b[1]
+	erase b
+	return data
+end function
+
+function filewrite_string(tfile As File,str As String,maxlen As integer)
+	Dim strbuf,maxbuf As byte[]
+	dim str_len as Integer = strlen(str)
+	strbuf = strtobytes(str)
+	maxbuf = new byte[maxlen]
+
+	
+	dim i as integer
+	for i = 0 to maxlen-1
+
+		if i <= str_len-1 then
+			maxbuf[i] = strbuf[i]
+		else
+			maxbuf[i] = 0
+		end if
+	next
+	filewrite(tfile,maxbuf,0,maxlen)
+	erase strbuf
+	erase maxbuf
+end function
+
+function fileread_string(tfile As File,maxlen As integer) As string
+	dim maxbuf as byte[] = new byte[maxlen]
+	dim str as string
+	fileread(tfile,maxbuf,0,maxlen)
+	str = bytestostr(maxbuf,maxlen)
+	erase maxbuf
+end function
+

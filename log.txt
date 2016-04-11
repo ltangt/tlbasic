@@ -1,0 +1,35 @@
+2005.11.07
+1.修改了native function按声明中的index直接访问,去掉了VM中的hashtable
+2.增加&H的十六进制数表示方式
+
+2005.11.14
+1.修改了参数传递中数组指针传递的BUG
+2.修改了十六进制数中的F不能表示的情况
+3.增加0x表示十六进数的方式
+
+
+2005.11.16
+1.修改了Double类型对Float类型的数据转换
+
+2005.11.18
+1.修改了工程代码的组织结构，分成完全独立的compiler和vm两个工程
+2.修改了VM中的code file,以及Native Function中PopAsString的内存泄露问题
+
+2005.11.21
+1.修改了数组到字符串转换的时候，字符串需要新建
+
+2005.11.23
+1.删除了compiler中的tstream中的自定义流.全部改用标准C提供的FILE作为流.
+2.删除了listfile.h和listfile.c,改为直接使用fprintf(g_listfp,...)
+3.修改了部分C++注释风格,改成了标准C以及doxgen的标准注释风格
+
+2005.12.04
+1.转变为C风格的注释: 在VS中按Ctrl+H进入“替换”的对话框。然后选择“使用”正则表达式。在“查找内容”中输入: // {.*} ，在"替换为“中输入: /* \1 */，即可！
+2.增加了tbytecode.h中的BYTE_CODE_NAMES和BYTE_CODE_FORMAT的两个常数表。在tcodelen.c和tcodefile.c中，针对字节码的打印和长度计算上通过查表来完成，去掉了以前的由各个bytecode的函数来实现。
+
+2005.12.25
+1.修改了_MY_DEBUG宏为_DEBUG
+
+
+2006.8.13
+1.修改了解析ArgList的时候，解析每个参数前的时候dimension没有清零的问题。

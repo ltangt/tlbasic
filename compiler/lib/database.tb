@@ -1,0 +1,35 @@
+Type FIELD
+End Type
+
+Type Database
+End Type
+
+Declare Native Function DBOpen(DBFileName as string) as Database
+Declare Native Function DBClose(Db as Database)
+
+Declare Native Function DBRecordCount(Db as Database) as Integer
+Declare Native Function DBRecordNo(Db as Database) as Integer
+Declare Native Function DBDelete(Db as Database)
+Declare Native Function DBUpdate(Db as Database) as boolean
+
+Declare Native Function DBBlank(Db as Database)
+Declare Native Function DBAppendBlank(Db as Database) as boolean
+Declare Native Function DBAppend(Db as Database) as boolean
+
+Declare Native Function DBMoveTo(Db as Database, RecordNum as Integer)
+Declare Native Function DBMoveNext(Db as Database)
+Declare Native Function DBMoveLast(Db as Database)
+Declare Native Function DBMoveFirst(Db as Database)
+Declare Native Function DBEof(Db as Database) as boolean
+Declare Native Function DBIsDelete(Db as Database) as boolean
+
+Declare Native Function DBGetMemo(Db as Database, Field as string) as byte[]
+'Declare Native	Function DBUpdateMemo(Db as Database, Field as string, Memo as string) as boolean
+Declare Native	Function DBUpdateMemo(Db as Database, Field as string, Memo as byte[], Count as integer) as boolean
+
+Declare Native Function DBLocate(DB as Database,conditon as String) as boolean
+'Declare Native	Function DBSeek(Db as Database,Field as string, Condition as string) as boolean
+
+Declare Native	 Function DBCount(Db as Database, Condition as string) as Integer
+Declare Native  Function DBSum(Db as Database,Field as string, Condition as string) as double
+	

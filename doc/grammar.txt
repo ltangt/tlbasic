@@ -1,0 +1,96 @@
+// This BASIC's Grammar:
+// 1.the variation types are only integer and string,not const
+// 2.support non-predefine variation,but not support XXX$,XXX% etc.
+// 3.only support one dimension array
+
+program -> ProgramK
+
+// -------------------------------------------------------------
+// ProgramK
+ProgramK -> { SubK | FunctionK | DimK | TypeK | OptionK | DeclareFunctionK | DeclareSubK }
+
+// -------------------------------------------------------------
+// OptionK  : not exist in parsetree
+OptionK ->  '$' IncludeK 
+IncludeK -> 'include' ':' STR  
+
+// -------------------------------------------------------------
+// subprogram and function declare
+DeclareFunctionK -> 'declare' ['native'] 'function' ID '(' ArglistK ')'
+DeclareSubK      -> 'declare' ['native'] 'sub'      ID '(' ArglistK ')'
+
+// -------------------------------------------------------------
+// subprogram and function defintion
+SubK -> 'sub' ID '(' ArglistK ')' statements 'end' 'sub'
+FunctionK -> 'function' ID '(' ArglistK ')' 'as' vartype statements 'end' 'function'
+ArglistK -> ArgDefK { ',' ArgDefK } | empty
+ArgDefK  -> ID [ '[' ']' ] 'as' vartype
+
+// -------------------------------------------------------------
+// variation defintion
+DimK -> 'dim' ['shared'] DimVarK { ',' DimVarK }   'as' vartype ['=' ExpK ]
+DimVarK -> ID [ '[' ']'] 
+vartype -> INTEGER | STRING | BYTE | SHORT | LONG | FLOAT| ID
+
+// -------------------------------------------------------------
+// type defintion
+TypeK -> 'type' ID {  TypeMemberK {',' TypeMemberK}  'as' vartype  } 'end' 'type'
+TypeMemberK ->  ID [ '[' NUM ']' ]
+
+// -------------------------------------------------------------
+// program statements
+StatementsK -> { StatementK }
+StatementK -> IfK | ForK | WhileK | DoWhileLoopK | DoLoopWhileK | SelectK | AssignK| CallK | ExitForK | ExitDoK | ReturnK | EraseK | ReDimK | NewK
+
+// -------------------------------------------------------------
+// exp 
+ExpK -> singleexp { logicop singleexp }
+logicop -> AND | OR
+singleexp -> simpleexp { relop simpleexp }
+relop -> EQ | LG | LT | LG_EQ | LT_EQ | NOT_EQ
+simpleexp -> term { addop term }
+addop -> '+' | '-'
+term -> factor { mulop factor }
+mulop -> '*' | '/' | 'mod'
+factor -> varname | CallK | '(' exp ')' | NUM | STR | FLOATNUM | '-' factor
+varname -> ID | ID '[' exp ']'
+
+// IfK
+IfK -> 'if' ExpK 'then' statements { 'elseif' exp  'then' StatementsK } ['else' StatementsK] 'end' if'
+
+// WhileK
+WhileK -> 'while' ExpK statments 'wend'
+
+// ForK
+ForK -> 'for' AssignK 'to' ExpK [ 'step' ExpK ] StatementsK 'next'
+
+// DoWhileLoopK
+DoWhileLoopK -> 'do' 'while' ExpK  StatementsK 'loop'
+
+// DoLoopWhileK
+DoLoopWhileK -> 'do' StatementsK 'loop' 'while' ExpK
+
+// SelectK
+SelectK -> 'select' 'case' ExpK { 'case' ExpK  StatementsK  'end' } ['default' StatementsK 'end' ] 'end' 'select'
+
+// AssignK
+AssignK -> varname '=' ExpK
+
+// CallK
+CallK -> ID '(' paramlist ')' | ID paramlist
+paramlist ->  exp { ',' exp } | empty  // in terms of dealare of the function or subprogram
+
+// ExitForK
+ExitForK -> 'exit' 'for'
+
+// ExitDoK
+ExitDoK -> 'exit' 'do'
+
+// ReturnK
+ReturnK -> 'return' ExpK
+
+// EraseK
+EraseK -> 'erase' varname
+
+// NewK
+NewK -> 'new' ( vartype '[' exp ']' |  ID )

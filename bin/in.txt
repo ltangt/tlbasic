@@ -1,0 +1,24 @@
+Declare Native #0 Function printint(p1 As Integer)
+Declare Native #1 Function printstr(p1 As String)
+
+sub main()
+	dim b as byte[] = new byte[5] 
+	b[0]="1"C 
+	b[1]="2"C 
+	b[2]="3"C 
+	b[3]=0 
+	printstr( b )
+	printstr( b )
+	printstr("  ")
+	testarray(b,0)
+	printstr("  ")
+	testarray(b,1)
+	printstr("  ")
+	testarray(b,2)
+	erase b
+end sub
+
+sub testarray(b as byte[], i as Integer)
+	printint(b[i])
+
+end sub

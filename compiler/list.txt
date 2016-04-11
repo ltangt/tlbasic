@@ -1,0 +1,161 @@
+Trace : line 1 matched token :KEYWORDS: declare 
+Trace : line 1 matched token :KEYWORDS: native 
+Trace : line 1 matched token :SHARP 
+Trace : line 1 matched token :NUM : 0
+Trace : line 1 matched token :KEYWORDS: function 
+Trace : line 1 matched token :ID : printint
+Trace : line 1 matched token :LP 
+Trace : line 1 matched token :ID : p1
+Trace : line 1 matched token :KEYWORDS: as 
+Trace : line 1 matched token :KEYWORDS: Integer 
+Trace : line 1 matched token :RP 
+Trace : line 2 matched token :LINEEND 
+Trace : line 2 matched token :KEYWORDS: declare 
+Trace : line 2 matched token :KEYWORDS: native 
+Trace : line 2 matched token :SHARP 
+Trace : line 2 matched token :NUM : 1
+Trace : line 2 matched token :KEYWORDS: function 
+Trace : line 2 matched token :ID : printstr
+Trace : line 2 matched token :LP 
+Trace : line 2 matched token :ID : p1
+Trace : line 2 matched token :KEYWORDS: as 
+Trace : line 2 matched token :KEYWORDS: String 
+Trace : line 2 matched token :RP 
+Trace : line 3 matched token :LINEEND 
+Trace : line 4 matched token :LINEEND 
+Trace : line 4 matched token :KEYWORDS: sub 
+Trace : line 4 matched token :ID : main
+Trace : line 4 matched token :LP 
+Trace : line 4 matched token :RP 
+Trace : line 5 matched token :LINEEND 
+Trace : line 5 matched token :KEYWORDS: dim 
+Trace : line 5 matched token :ID : b
+Trace : line 5 matched token :KEYWORDS: as 
+Trace : line 5 matched token :KEYWORDS: Byte 
+Trace : line 5 matched token :MID_LP 
+Trace : line 5 matched token :MID_RP 
+Trace : line 5 matched token :EQ 
+Trace : line 5 matched token :KEYWORDS: new 
+Trace : line 5 matched token :KEYWORDS: Byte 
+Trace : line 5 matched token :MID_LP 
+Trace : line 5 matched token :NUM : 5
+Trace : line 5 matched token :MID_RP 
+Trace : line 6 matched token :LINEEND 
+Trace : line 6 matched token :ID : testarray
+Trace : line 6 matched token :LP 
+Trace : line 6 matched token :ID : b
+Trace : line 6 matched token :COMMA 
+Trace : line 6 matched token :NUM : 1
+Trace : line 6 matched token :RP 
+Trace : line 7 matched token :LINEEND 
+Trace : line 7 matched token :KEYWORDS: erase 
+Trace : line 7 matched token :ID : b
+Trace : line 8 matched token :LINEEND 
+Trace : line 8 matched token :KEYWORDS: end 
+Trace : line 8 matched token :KEYWORDS: sub 
+Trace : line 9 matched token :LINEEND 
+Trace : line 10 matched token :LINEEND 
+Trace : line 10 matched token :KEYWORDS: sub 
+Trace : line 10 matched token :ID : testarray
+Trace : line 10 matched token :LP 
+Trace : line 10 matched token :ID : b
+Trace : line 10 matched token :KEYWORDS: as 
+Trace : line 10 matched token :KEYWORDS: Byte 
+Trace : line 10 matched token :MID_LP 
+Trace : line 10 matched token :MID_RP 
+Trace : line 10 matched token :COMMA 
+Trace : line 10 matched token :ID : i
+Trace : line 10 matched token :KEYWORDS: as 
+Trace : line 10 matched token :KEYWORDS: Integer 
+Trace : line 10 matched token :RP 
+Trace : line 11 matched token :LINEEND 
+Trace : line 11 matched token :ID : printint
+Trace : line 11 matched token :LP 
+Trace : line 11 matched token :ID : b
+Trace : line 11 matched token :MID_LP 
+Trace : line 11 matched token :ID : i
+Trace : line 11 matched token :MID_RP 
+Trace : line 11 matched token :RP 
+Trace : line 12 matched token :LINEEND 
+Trace : line 13 matched token :LINEEND 
+Trace : line 13 matched token :KEYWORDS: end 
+Trace : line 13 matched token :KEYWORDS: sub 
+Trace : line 14 matched token :LINEEND 
+Trace : line 14 matched token :FILEEND 
+// ------------------------------------------------------------------
+    ProgramK:    int: 0  dimension = 0
+        DeclareFunctionK:    int: 0   string: printint  dimension = 0 NativeModifier
+            ArglistK:    int: 0  dimension = 0
+                ArgDefK:    int: 4   string: p1   string2: Integer  dimension = 0
+        DeclareFunctionK:    int: 0   string: printstr  dimension = 0 NativeModifier
+            ArglistK:    int: 0  dimension = 0
+                ArgDefK:    int: 9   string: p1   string2: String  dimension = 0
+        SubK:    int: 0   string: main  dimension = 0
+            ArglistK:    int: 0  dimension = 0
+            StatementsK:    int: 0  dimension = 0
+                DimK:    int: 1   string2: byte  dimension = 1
+                    DimVarK:    int: 1   string: b   string2: byte  dimension = 1
+                    ExpK:    int: 0  dimension = 0
+                        NewK:    int: 1   string: byte  dimension = 0
+                            ExpK:    int: 0  dimension = 0
+                                ConstNumK:    int: 5  dimension = 0
+                CallK:    int: 0   string: testarray  dimension = 0
+                    ParamlistK:    int: 0  dimension = 0
+                        ExpK:    int: 0  dimension = 0
+                            VarnameK:    int: 0  dimension = 0
+                                PrimitiveVarnameK:    int: 0   string: b  dimension = 0
+                        ExpK:    int: 0  dimension = 0
+                            ConstNumK:    int: 1  dimension = 0
+                EraseK:    int: 0  dimension = 0
+                    VarnameK:    int: 0  dimension = 0
+                        PrimitiveVarnameK:    int: 0   string: b  dimension = 0
+        SubK:    int: 0   string: testarray  dimension = 0
+            ArglistK:    int: 0  dimension = 0
+                ArgDefK:    int: 1   string: b   string2: byte  dimension = 1
+                ArgDefK:    int: 4   string: i   string2: Integer  dimension = 0
+            StatementsK:    int: 0  dimension = 0
+                CallK:    int: 0   string: printint  dimension = 0
+                    ParamlistK:    int: 0  dimension = 0
+                        ExpK:    int: 0  dimension = 0
+                            VarnameK:    int: 0  dimension = 0
+                                PrimitiveVarnameK:    int: 0   string: b  dimension = 0
+                                    ExpK:    int: 0  dimension = 0
+                                        VarnameK:    int: 0  dimension = 0
+                                            PrimitiveVarnameK:    int: 0   string: i  dimension = 0
+---------------------------------------------------
+magic: babeface
+ magic_version: 100
+num_global_Variables: 0
+num_functions: 2
+0 function : name: main, type: 0 codesize: 67 
+0000000    PUSH PtrType 
+0000002    CONST IntegerType 5 
+0000008    CONST IntegerType 1 
+0000014    MUL 
+0000015    ALLOC 
+0000016    STORE local 4 
+0000022    LOAD local 4 
+0000028    CONVERT PtrType 
+0000030    CONST IntegerType 1 
+0000036    CONVERT IntegerType 
+0000038    CALL 1 
+0000043    POP 1 
+0000048    LOAD local 4 
+0000054    FREE 
+0000055    POP 1 
+0000060    PUSH NullType 
+0000062    RET 0 
+1 function : name: testarray, type: 0 codesize: 46 
+0000000    FORCE_LOAD local -18 PtrType 
+0000007    LOAD local -13 
+0000013    CONST IntegerType 1 
+0000019    MUL 
+0000020    HEAP_LOAD ByteType 
+0000022    CONVERT IntegerType 
+0000024    INVOKE 2 
+0000029    POP 1 
+0000034    POP 0 
+0000039    PUSH NullType 
+0000041    RET 10 
+---------------------------------------------------
+Success!

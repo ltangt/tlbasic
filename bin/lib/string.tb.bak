@@ -1,0 +1,23 @@
+
+function strlen(str As String) As Integer
+	Dim i As Integer = 0
+	While str[i] <> 0
+		i = i+ 1
+	Wend
+	return i
+end function
+
+function bytestostr(bytebuf[] As byte, length As Integer) As String
+	Dim str As String = ""
+	Dim i As Integer 
+	For i =0 To length-1
+		str = str + bytebuf[i]
+	Next
+	return str
+end function
+
+function strtobytes(str As String) As Byte[]
+	Dim len As Integer
+	Dim bytebuf[] As byte
+	len = strlen(str)
+end function
